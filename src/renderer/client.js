@@ -35,31 +35,31 @@ loadComponents().then(() => {
   renderApp(App)
 })
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register(HOME_PATH + 'service-worker.js')
-      .then(registration => {
-        console.log('SW registered: ', registration.scope)
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker
+//       .register(HOME_PATH + 'service-worker.js')
+//       .then(registration => {
+//         console.log('SW registered: ', registration.scope)
 
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing
-          if (installingWorker == null) {
-            return
-          }
-          installingWorker.onstatechange = () => {
-            switch (installingWorker.state) {
-              case 'installed':
-                if (navigator.serviceWorker.controller) {
-                  window.location.reload()
-                }
-                break
-            }
-          }
-        }
-      })
-      .catch(registrationError => {
-        console.log('SW registration failed: ', registrationError)
-      })
-  })
-}
+//         registration.onupdatefound = () => {
+//           const installingWorker = registration.installing
+//           if (installingWorker == null) {
+//             return
+//           }
+//           installingWorker.onstatechange = () => {
+//             switch (installingWorker.state) {
+//               case 'installed':
+//                 if (navigator.serviceWorker.controller) {
+//                   window.location.reload()
+//                 }
+//                 break
+//             }
+//           }
+//         }
+//       })
+//       .catch(registrationError => {
+//         console.log('SW registration failed: ', registrationError)
+//       })
+//   })
+// }
